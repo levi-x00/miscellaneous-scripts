@@ -191,6 +191,7 @@ const main = async () => {
         }
       }
       if (!data.Marker) break;
+      nextMarker = data.Marker;
     } catch (e1) {
       console.log(e1);
     }
