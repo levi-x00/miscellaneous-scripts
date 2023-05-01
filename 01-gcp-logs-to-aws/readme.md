@@ -6,11 +6,12 @@ public internet.
 
 ## Setup
 1. Create log sink with following pattern as well create the pub/sub topic here as destination.
+2. Create API Gateway in AWS (POST), the API Gateway URL will be put as environment variable in Cloud Function.
 ```
 logName="projects/[PROJECT_ID]/logs/cloudaudit.googleapis.com%2Factivity"
 protoPayload.methodName:"compute.firewalls"
 ```
-2. Create cloud function triggered by created pub/sub.
+3. Create cloud function triggered by created pub/sub.
 ```
 # Function dependencies, for example:
 # package>=version
@@ -38,7 +39,7 @@ def hello_pubsub(event, context):
     else:
         print("no response in 'protoPayload'")
 ```
-3. Create lambda function.
+4. Create lambda function, set the API Gateway (from step 2) as trigger.
 ```py
 import json
 
@@ -49,5 +50,4 @@ def lambda_handler(event, context):
         'body': json.dumps('logs printed!')
     }
 ```
-4. Create API Gateway with POST method, then create resource and deploy it.
-5. Create a firewall rule, and try to edit the rule to generate some events.
+5. Create a firewall rule in Google Cloud, and try to edit the rule to generate some events.
