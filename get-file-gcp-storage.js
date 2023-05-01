@@ -5,6 +5,7 @@
 const { Storage } = require('@google-cloud/storage');
 const fs = require('fs').promises;
 
+// this is the same thing, like setting up ~/.aws/credentials
 const localFile = 'D:\\My.Code\\JavaScript\\credentials.txt';
 
 const main = async (bucketName, remoteFile, localFile) => {
