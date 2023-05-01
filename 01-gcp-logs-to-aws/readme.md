@@ -1,5 +1,9 @@
 # gcp-logs-to-aws
-How to Send Logs From GCP to AWS
+How to Send Logs From GCP to AWS.
+
+Disclaimer: this is just an experiment, the security concern is the data from Google Cloud still going through 
+public internet.
+
 ## Setup
 1. Create log sink with following pattern as well create the pub/sub topic here as destination.
 ```
