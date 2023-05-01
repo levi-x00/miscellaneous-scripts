@@ -1,1 +1,1 @@
-# miscellaneous-scripts
+# miscellaneous scripts
