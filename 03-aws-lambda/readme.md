@@ -2,9 +2,9 @@
 
 ## Some Prerequisites to follow before trying this lambda function template
 
-### 1. Create S3 Tfstate Bucket
+### 1. Create S3 for Tfstate Bucket & Lambda
 
-go to AWS s3 console to create s3 for the tfstate, on my case I'll create s3 bucket with the following bucket policy, from this [source](https://repost.aws/knowledge-center/s3-bucket-policy-for-config-rule)
+go to AWS s3 console to create s3 for the tfstate and lambda functions, name them whatever you want as long as they're unique, on my case I'll create s3 bucket with the following bucket policy, from this [source](https://repost.aws/knowledge-center/s3-bucket-policy-for-config-rule)
 
 ```json
 {
