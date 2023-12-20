@@ -5,12 +5,12 @@ variable "lambda_name" {
 
 variable "region" {
   type    = string
-  default = "us-east-1"
+  default = "ap-southeast-1"
 }
 
 variable "profile" {
   type    = string
-  default = "default"
+  default = "project"
 }
 
 variable "zip_file" {
@@ -22,7 +22,8 @@ variable "s3_bucket_lambda" {
 }
 
 variable "runtime" {
-  default = ""
+  type    = string
+  default = "python3.9"
 }
 
 variable "timeout" {
@@ -34,7 +35,7 @@ variable "memory_size" {
 }
 
 variable "handler" {
-  default = ""
+  default = "lambda_function.lambda_handler"
 }
 
 variable "subnet_ids" {

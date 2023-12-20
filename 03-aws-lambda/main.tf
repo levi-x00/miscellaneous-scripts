@@ -13,12 +13,10 @@ resource "random_uuid" "lambda_src_hash" {
   }
 }
 
-
-
 resource "null_resource" "lambda_zip" {
   triggers = {
     main_file    = md5(file("${path.module}/src/lambda_function.py"))
-    dependencies = md5(file("${path.module}/src/requirements.json"))
+    dependencies = md5(file("${path.module}/src/requirements.txt"))
   }
 
   provisioner "local-exec" {
@@ -33,11 +31,12 @@ resource "aws_lambda_function" "this" {
   ]
 
   function_name = local.function_name
-  handler       = var.handler
-  runtime       = var.runtime
-  timeout       = var.timeout
-  role          = aws_iam_role.lambda_role.arn
-  memory_size   = var.memory_size
+
+  handler     = var.handler
+  runtime     = var.runtime
+  timeout     = var.timeout
+  role        = aws_iam_role.lambda_role.arn
+  memory_size = var.memory_size
 
   filename         = data.archive_file.lambda_src.output_path
   source_code_hash = data.archive_file.lambda_src.output_base64sha256
