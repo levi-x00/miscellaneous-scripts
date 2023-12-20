@@ -10,15 +10,7 @@ variable "region" {
 
 variable "profile" {
   type    = string
-  default = "project"
-}
-
-variable "zip_file" {
-  default = "lambda_function.zip"
-}
-
-variable "s3_bucket_lambda" {
-  default = ""
+  default = "default"
 }
 
 variable "runtime" {
