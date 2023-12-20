@@ -24,18 +24,6 @@ resource "null_resource" "lambda_zip" {
   provisioner "local-exec" {
     command = "pip install -r ${path.module}/src/requirements.txt -t ${path.module}/src/"
   }
-
-  #   provisioner "local-exec" {
-  #     command = <<EOT
-  #       cd lambda && npm install
-  #       zip -rq ${var.zip_file} .
-  #       hash_value=$(openssl dgst -binary -sha256 ${var.zip_file} | openssl base64)
-  #       aws s3 cp ${var.zip_file} s3://${var.s3_bucket_lambda}/lambda/ --metadata hash=$hash_value --only-show-errors
-  #       rm -rf ${var.zip_file} node_modules package-lock.json
-  #       ls -al
-  #       cd ..
-  #     EOT
-  #   }
 }
 
 resource "aws_lambda_function" "this" {
@@ -53,4 +41,9 @@ resource "aws_lambda_function" "this" {
 
   filename         = data.archive_file.lambda_src.output_path
   source_code_hash = data.archive_file.lambda_src.output_base64sha256
+
+  vpc_config {
+    subnet_ids         = var.subnet_ids
+    security_group_ids = var.security_group_ids
+  }
 }

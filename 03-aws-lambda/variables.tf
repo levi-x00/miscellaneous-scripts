@@ -36,3 +36,13 @@ variable "memory_size" {
 variable "handler" {
   default = ""
 }
+
+variable "subnet_ids" {
+  type    = list(string)
+  default = []
+}
+
+variable "security_group_ids" {
+  type    = list(string)
+  default = []
+}
