@@ -20,7 +20,10 @@ resource "null_resource" "lambda_zip" {
   }
 
   provisioner "local-exec" {
-    command = "pip install -r ${path.module}/src/requirements.txt -t ${path.module}/src/"
+    command = <<EOT
+      pip install -r ${path.module}/src/requirements.txt -t ${path.module}/src/
+      rm -rf ${path.module}/src/*.dist-info
+    EOT
   }
 }
 

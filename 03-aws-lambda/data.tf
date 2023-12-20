@@ -26,9 +26,12 @@ data "archive_file" "lambda_src" {
   excludes = [
     "__pycache__",
     "venv",
+    "*.dist-info",
+    "${random_uuid.lambda_src_hash.result}.zip",
+    "requirements.txt"
   ]
 
   source_dir  = "${path.module}/src"
-  output_path = "${random_uuid.lambda_src_hash.result}.zip"
+  output_path = "${path.module}/src/${random_uuid.lambda_src_hash.result}.zip"
   type        = "zip"
 }
