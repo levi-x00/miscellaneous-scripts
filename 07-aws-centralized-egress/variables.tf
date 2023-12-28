@@ -1,6 +1,6 @@
 variable "region" {
   type    = string
-  default = "ap-southeast-1"
+  default = "us-east-1"
 }
 
 variable "profile" {
@@ -8,9 +8,19 @@ variable "profile" {
   default = "default"
 }
 
-variable "vpc_cidr_block" {
+variable "vpc_egress_cidr_block" {
   type    = string
-  default = "10.43.0.0/23"
+  default = "10.43.0.0/24"
+}
+
+variable "vpc_spoke01_cidr_block" {
+  type    = string
+  default = "10.44.0.0/24"
+}
+
+variable "vpc_spoke02_cidr_block" {
+  type    = string
+  default = "10.45.0.0/24"
 }
 
 variable "enable_dns_hostnames" {
@@ -35,11 +45,26 @@ variable "environment" {
 
 variable "application" {
   type    = string
-  default = "cicd-application"
+  default = "centralized-egress"
 
 }
 
-variable "public_subnet_cidr_blocks" {
+variable "pub_egress_subnet_cidr_blocks" {
+  type    = list(string)
+  default = []
+}
+
+variable "prv_egress_subnet_cidr_blocks" {
+  type    = list(string)
+  default = []
+}
+
+variable "spoke01_subnet_cidr_blocks" {
+  type    = list(string)
+  default = []
+}
+
+variable "spoke02_subnet_cidr_blocks" {
   type    = list(string)
   default = []
 }
@@ -53,4 +78,3 @@ variable "map_public_ip_on_launch" {
   type    = bool
   default = true
 }
-
