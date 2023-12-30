@@ -23,5 +23,25 @@ resource "aws_vpc" "vpc_spoke02" {
 }
 
 resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.vpc.id
+  vpc_id = aws_vpc.vpc_egress.id
+}
+
+resource "aws_eip" "eips" {
+  count  = 2
+  domain = "vpc"
+  tags = {
+    Name = "eip-${count.index + 1}"
+  }
+}
+
+resource "aws_nat_gateway" "nat_gw" {
+  depends_on = [aws_eip.eips]
+
+  count         = 2
+  allocation_id = aws_eip.eips[count.index].id
+  subnet_id     = aws_subnet.public_egress[count.index].id
+
+  tags = {
+    Name = "nat-gw-${count.index + 1}"
+  }
 }

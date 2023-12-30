@@ -13,10 +13,17 @@ resource "aws_route_table" "public_egress_rt" {
   }
 }
 
-resource "aws_route_table" "private_egress_rt" {
+resource "aws_route_table" "private_egress_rt1" {
   vpc_id = aws_vpc.vpc_egress.id
   tags = {
-    Name = "public-egress-rt"
+    Name = "public-egress-rt1"
+  }
+}
+
+resource "aws_route_table" "private_egress_rt2" {
+  vpc_id = aws_vpc.vpc_egress.id
+  tags = {
+    Name = "public-egress-rt2"
   }
 }
 
