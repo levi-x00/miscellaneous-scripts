@@ -4,6 +4,10 @@ resource "aws_vpc" "vpc_egress" {
 
   enable_dns_hostnames = var.enable_dns_hostnames
   enable_dns_support   = var.enable_dns_support
+
+  tags = {
+    Name = "vpc-egress"
+  }
 }
 
 resource "aws_vpc" "vpc_spoke01" {
@@ -12,6 +16,10 @@ resource "aws_vpc" "vpc_spoke01" {
 
   enable_dns_hostnames = var.enable_dns_hostnames
   enable_dns_support   = var.enable_dns_support
+
+  tags = {
+    Name = "vpc-spoke01"
+  }
 }
 
 resource "aws_vpc" "vpc_spoke02" {
@@ -20,6 +28,10 @@ resource "aws_vpc" "vpc_spoke02" {
 
   enable_dns_hostnames = var.enable_dns_hostnames
   enable_dns_support   = var.enable_dns_support
+
+  tags = {
+    Name = "vpc-spoke02"
+  }
 }
 
 resource "aws_internet_gateway" "igw" {

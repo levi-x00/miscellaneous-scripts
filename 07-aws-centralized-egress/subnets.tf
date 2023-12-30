@@ -40,7 +40,7 @@ resource "aws_subnet" "spoke01_subnets" {
 resource "aws_subnet" "spoke02_subnets" {
   count                   = length(var.spoke02_subnet_cidr_blocks)
   vpc_id                  = aws_vpc.vpc_spoke02.id
-  cidr_block              = var.spoke01_subnet_cidr_blocks[count.index]
+  cidr_block              = var.spoke02_subnet_cidr_blocks[count.index]
   availability_zone       = var.availability_zones[count.index]
   map_public_ip_on_launch = false
 
