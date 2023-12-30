@@ -13,7 +13,7 @@ resource "aws_subnet" "public_egress" {
 
 resource "aws_subnet" "private_egress" {
   count                   = length(var.prv_egress_subnet_cidr_blocks)
-  vpc_id                  = aws_vpc.egress_vpc.id
+  vpc_id                  = aws_vpc.vpc_egress.id
   cidr_block              = var.prv_egress_subnet_cidr_blocks[count.index]
   availability_zone       = var.availability_zones[count.index]
   map_public_ip_on_launch = false

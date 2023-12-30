@@ -24,6 +24,10 @@ resource "aws_vpc" "vpc_spoke02" {
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc_egress.id
+
+  tags = {
+    Name = "egress-igw"
+  }
 }
 
 resource "aws_eip" "eips" {
