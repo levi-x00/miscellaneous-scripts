@@ -2,9 +2,18 @@ import json
 import random
 import string
 import re
+import requests
 
 
 def lambda_handler(event, context):
+    response = requests.get('https://api.github.com/')
+
+    # print response
+    print(response)
+
+    # print request status_code
+    print(response.status_code)
+
     max = 10
     password = ''.join(random.choices(
         string.ascii_lowercase+string.ascii_uppercase, k=max))

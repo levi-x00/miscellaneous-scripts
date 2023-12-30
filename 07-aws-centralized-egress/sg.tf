@@ -8,6 +8,13 @@ resource "aws_default_security_group" "vpc_egress_default" {
     to_port   = 0
   }
 
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -30,6 +37,13 @@ resource "aws_default_security_group" "vpc_spoke01_default" {
     to_port   = 0
   }
 
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -50,6 +64,13 @@ resource "aws_default_security_group" "vpc_spoke02_default" {
     self      = true
     from_port = 0
     to_port   = 0
+  }
+
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
