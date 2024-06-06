@@ -1,6 +1,0 @@
-.terraform*
-terraform*
-src/*
-!src/lambda_function.py
-!src/requirements.txt
-*.zip
